@@ -1,0 +1,6 @@
+{
+  "id": "{{randomValue type='UUID'}}",
+  "userName": "$(userName)",
+  "roleName": "$(roleName)",
+  "message" : "New user successfully have been added"
+}
