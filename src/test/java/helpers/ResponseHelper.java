@@ -4,15 +4,14 @@ import cucumber.api.DataTable;
 import gherkin.formatter.model.DataTableRow;
 
 import io.restassured.response.Response;
-import utils.ResponseUtil;
 import static org.hamcrest.CoreMatchers.containsString;
 
 
 public class ResponseHelper {
 
-    public static void checkStatusCode() {
+    public static void checkStatusCode(Response response) {
 
-        int statusCode = ResponseUtil.getResponse().statusCode();
+        int statusCode = response.statusCode();
 
         if (statusCode == 200) {
             System.out.println("status code is 200");
@@ -21,13 +20,12 @@ public class ResponseHelper {
         }
     }
 
-    public static void isContainsResponse(DataTable dataTable) {
+    public static void isContainsResponse(DataTable dataTable, Response response) {
         for (DataTableRow row : dataTable.getGherkinRows()) {
 
             String key = row.getCells().get(0);
             String value = row.getCells().get(1);
 
-            Response response = ResponseUtil.getResponse();
             response.then().assertThat().body(key,containsString(value));
         }
     }
