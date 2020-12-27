@@ -7,7 +7,6 @@ import org.json.simple.JSONObject;
 
 public class RequestUtil {
 
-    public static JSONObject requestJson;
 
     public static JSONObject getRequest(DataTable dataTable) {
 
